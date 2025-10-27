@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: myblog-frontend
+    env: node
+    plan: free
+    branch: main
+
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm start"
+
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://myblog-backend.onrender.com
