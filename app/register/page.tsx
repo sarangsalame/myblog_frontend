@@ -13,8 +13,8 @@ export default function RegisterPage() {
   const handleRegister = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await registerUser({ name, email, password });
-    if (res.token) {
-      localStorage.setItem('token', res.token);
+    if (res.accessToken) {
+      localStorage.setItem('accesstoken', res.accessToken);
       router.push('/');
     } else {
       alert(res.message);

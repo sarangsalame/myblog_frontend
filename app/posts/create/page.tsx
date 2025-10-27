@@ -7,14 +7,14 @@ import { useAuth } from '../../context/AuthContext';
 
 function CreatePostForm() {
   const router = useRouter();
-  const { token } = useAuth();
+  const { accessToken } = useAuth();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!token) return alert('Login required');
-    const res = await createPost({ title, content }, token);
+    if (!accessToken) return alert('Login required');
+    const res = await createPost({ title, content }, accessToken);
     router.push(`/posts/${res._id}`);
   };
 

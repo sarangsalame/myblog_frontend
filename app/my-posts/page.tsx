@@ -8,16 +8,16 @@ import PrivateRoute from '../components/PrivateRoute';
 import { Post } from '../types';
 
 export default function MyPostsPage() {
-  const { token } = useAuth();
+  const { accessToken } = useAuth();
   const router = useRouter();
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
 
   const loadPosts = async () => {
-    if (!token) return;
+    if (!accessToken) return;
     setLoading(true);
     try {
-      const data = await fetchMyPosts(token);
+      const data = await fetchMyPosts(accessToken);
       setPosts(data);
     } catch (err) {
       console.error(err);
@@ -26,13 +26,13 @@ export default function MyPostsPage() {
   };
 
   useEffect(() => {
-    if (token) loadPosts();
-  }, [token]);
+    if (accessToken) loadPosts();
+  }, [accessToken]);
 
   const handleDelete = async (id: string) => {
-    if (!token) return;
+    if (!accessToken) return;
     if (confirm('Are you sure you want to delete this post?')) {
-      await deletePost(id, token);
+      await deletePost(id, accessToken);
       loadPosts();
     }
   };

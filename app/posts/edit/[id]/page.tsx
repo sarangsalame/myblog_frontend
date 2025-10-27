@@ -10,7 +10,7 @@ import { Post } from '../../../types';
 function EditPostForm() {
   const { id } = useParams();
   const router = useRouter();
-  const { token } = useAuth();
+  const { accessToken } = useAuth();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -24,8 +24,8 @@ function EditPostForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!token || !id) return;
-    await updatePost(id as string, { title, content }, token);
+    if (!accessToken || !id) return;
+    await updatePost(id as string, { title, content }, accessToken);
     router.push(`/posts/${id}`);
   };
 

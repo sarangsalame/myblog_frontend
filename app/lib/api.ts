@@ -29,41 +29,41 @@
 //   return res.json();
 // };
 
-// export const fetchMyPosts = async (token:string) : Promise<Post[]> => {
+// export const fetchMyPosts = async (accessToken:string) : Promise<Post[]> => {
 //   const res = await fetch(`${API_URL}/posts/my-posts`, {
-//     headers: { Authorization: `Bearer ${token}` },
+//     headers: { Authorization: `Bearer ${accessToken}` },
 //   });
 //   return res.json();
 // };
 
-// export const createPost = async (data:Post, token:string) => {
+// export const createPost = async (data:Post, accessToken:string) => {
 //   const res = await fetch(`${API_URL}/posts`, {
 //     method: 'POST',
 //     headers: { 
 //       'Content-Type': 'application/json',
-//       ...(token && { Authorization: `Bearer ${token}` })
+//       ...(accessToken && { Authorization: `Bearer ${accessToken}` })
 //     },
 //     body: JSON.stringify(data),
 //   });
 //   return res.json();
 // };
 
-// export const updatePost = async (id:string, data:Post, token:string) => {
+// export const updatePost = async (id:string, data:Post, accessToken:string) => {
 //   const res = await fetch(`${API_URL}/posts/${id}`, {
 //     method: 'PUT',
 //     headers: { 
 //       'Content-Type': 'application/json',
-//       ...(token && { Authorization: `Bearer ${token}` })
+//       ...(accessToken && { Authorization: `Bearer ${accessToken}` })
 //     },
 //     body: JSON.stringify(data),
 //   });
 //   return res.json();
 // };
 
-// export const deletePost = async (id:string, token:string) => {
+// export const deletePost = async (id:string, accessToken:string) => {
 //   const res = await fetch(`${API_URL}/posts/${id}`, {
 //     method: 'DELETE',
-//     headers: { Authorization: `Bearer ${token}` },
+//     headers: { Authorization: `Bearer ${accessToken}` },
 //   });
 //   return res.json();
 // };
@@ -101,41 +101,41 @@ export const fetchPost = async (id: string): Promise<Post> => {
   return res.json();
 };
 
-export const createPost = async (data: { title: string; content: string }, token?: string): Promise<Post> => {
+export const createPost = async (data: { title: string; content: string }, accessToken?: string): Promise<Post> => {
   const res = await fetch(`${API_URL}/posts`, {
     method: 'POST',
     headers: { 
       'Content-Type': 'application/json',
-      ...(token && { Authorization: `Bearer ${token}` })
+      ...(accessToken && { Authorization: `Bearer ${accessToken}` })
     },
     body: JSON.stringify(data),
   });
   return res.json();
 };
 
-export const updatePost = async (id: string, data: { title: string; content: string }, token: string): Promise<Post> => {
+export const updatePost = async (id: string, data: { title: string; content: string }, accessToken: string): Promise<Post> => {
   const res = await fetch(`${API_URL}/posts/${id}`, {
     method: 'PUT',
     headers: { 
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${accessToken}`
     },
     body: JSON.stringify(data),
   });
   return res.json();
 };
 
-export const deletePost = async (id: string, token: string): Promise<{ message: string }> => {
+export const deletePost = async (id: string, accessToken: string): Promise<{ message: string }> => {
   const res = await fetch(`${API_URL}/posts/${id}`, {
     method: 'DELETE',
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${accessToken}` },
   });
   return res.json();
 };
 
-export const fetchMyPosts = async (token: string): Promise<Post[]> => {
+export const fetchMyPosts = async (accessToken: string): Promise<Post[]> => {
   const res = await fetch(`${API_URL}/posts/my-posts`, {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${accessToken}` },
   });
   return res.json();
 };
