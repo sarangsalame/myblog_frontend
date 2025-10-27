@@ -10,4 +10,4 @@ services:
 
     envVars:
       - key: NEXT_PUBLIC_API_URL
-        value: https://myblog-backend.onrender.com
+        value: https://myblog-backend-dzhq.onrender.com
