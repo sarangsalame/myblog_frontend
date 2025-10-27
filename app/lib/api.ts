@@ -2,7 +2,7 @@
 // const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // export const registerUser = async (data: User) => {
-//   const res = await fetch(`${API_URL}/users/register`, {
+//   const res = await fetch(`${API_URL}/api/users/register`, {
 //     method: 'POST',
 //     headers: { 'Content-Type': 'application/json' },
 //     body: JSON.stringify(data),
@@ -11,7 +11,7 @@
 // };
 
 // export const loginUser = async (data:User) => {
-//   const res = await fetch(`${API_URL}/users/login`, {
+//   const res = await fetch(`${API_URL}/api/users/login`, {
 //     method: 'POST',
 //     headers: { 'Content-Type': 'application/json' },
 //     body: JSON.stringify(data),
@@ -20,24 +20,24 @@
 // };
 
 // export const fetchPosts = async (page = 1, search = '') => {
-//   const res = await fetch(`${API_URL}/posts?page=${page}&limit=10&search=${search}`);
+//   const res = await fetch(`${API_URL}/api/posts?page=${page}&limit=10&search=${search}`);
 //   return res.json(); // returns { total, page, limit, posts }
 // };
 
 // export const fetchPost = async (id:string) => {
-//   const res = await fetch(`${API_URL}/posts/${id}`);
+//   const res = await fetch(`${API_URL}/api/posts/${id}`);
 //   return res.json();
 // };
 
 // export const fetchMyPosts = async (accessToken:string) : Promise<Post[]> => {
-//   const res = await fetch(`${API_URL}/posts/my-posts`, {
+//   const res = await fetch(`${API_URL}/api/posts/my-posts`, {
 //     headers: { Authorization: `Bearer ${accessToken}` },
 //   });
 //   return res.json();
 // };
 
 // export const createPost = async (data:Post, accessToken:string) => {
-//   const res = await fetch(`${API_URL}/posts`, {
+//   const res = await fetch(`${API_URL}/api/posts`, {
 //     method: 'POST',
 //     headers: { 
 //       'Content-Type': 'application/json',
@@ -49,7 +49,7 @@
 // };
 
 // export const updatePost = async (id:string, data:Post, accessToken:string) => {
-//   const res = await fetch(`${API_URL}/posts/${id}`, {
+//   const res = await fetch(`${API_URL}/api/posts/${id}`, {
 //     method: 'PUT',
 //     headers: { 
 //       'Content-Type': 'application/json',
@@ -61,7 +61,7 @@
 // };
 
 // export const deletePost = async (id:string, accessToken:string) => {
-//   const res = await fetch(`${API_URL}/posts/${id}`, {
+//   const res = await fetch(`${API_URL}/api/posts/${id}`, {
 //     method: 'DELETE',
 //     headers: { Authorization: `Bearer ${accessToken}` },
 //   });
@@ -74,7 +74,7 @@ import { Post, PaginatedPosts, User } from '../types';
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const registerUser = async (data: { name: string; email: string; password: string }): Promise<{ user?: User; accessToken?: string; refreshToken?:string; message?: string }> => {
-  const res = await fetch(`${API_URL}/users/register`, {
+  const res = await fetch(`${API_URL}/api/users/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -83,7 +83,7 @@ export const registerUser = async (data: { name: string; email: string; password
 };
 
 export const loginUser = async (data: { email: string; password: string }): Promise<{ user?: User; accessToken?: string; refreshToken?:string; message?: string }> => {
-  const res = await fetch(`${API_URL}/users/login`, {
+  const res = await fetch(`${API_URL}/api/users/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -92,17 +92,17 @@ export const loginUser = async (data: { email: string; password: string }): Prom
 };
 
 export const fetchPosts = async (page = 1, search = ''): Promise<PaginatedPosts> => {
-  const res = await fetch(`${API_URL}/posts?page=${page}&limit=10`);
+  const res = await fetch(`${API_URL}/api/posts?page=${page}&limit=10`);
   return res.json();
 };
 
 export const fetchPost = async (id: string): Promise<Post> => {
-  const res = await fetch(`${API_URL}/posts/${id}`);
+  const res = await fetch(`${API_URL}/api/posts/${id}`);
   return res.json();
 };
 
 export const createPost = async (data: { title: string; content: string }, accessToken?: string): Promise<Post> => {
-  const res = await fetch(`${API_URL}/posts`, {
+  const res = await fetch(`${API_URL}/api/posts`, {
     method: 'POST',
     headers: { 
       'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ export const createPost = async (data: { title: string; content: string }, acces
 };
 
 export const updatePost = async (id: string, data: { title: string; content: string }, accessToken: string): Promise<Post> => {
-  const res = await fetch(`${API_URL}/posts/${id}`, {
+  const res = await fetch(`${API_URL}/api/posts/${id}`, {
     method: 'PUT',
     headers: { 
       'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ export const updatePost = async (id: string, data: { title: string; content: str
 };
 
 export const deletePost = async (id: string, accessToken: string): Promise<{ message: string }> => {
-  const res = await fetch(`${API_URL}/posts/${id}`, {
+  const res = await fetch(`${API_URL}/api/posts/${id}`, {
     method: 'DELETE',
     headers: { Authorization: `Bearer ${accessToken}` },
   });
@@ -134,7 +134,7 @@ export const deletePost = async (id: string, accessToken: string): Promise<{ mes
 };
 
 export const fetchMyPosts = async (accessToken: string): Promise<Post[]> => {
-  const res = await fetch(`${API_URL}/posts/my-posts`, {
+  const res = await fetch(`${API_URL}/api/posts/my-posts`, {
     headers: { Authorization: `Bearer ${accessToken}` },
   });
   return res.json();
